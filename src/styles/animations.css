@@ -1,0 +1,137 @@
+/* ==========================================================================
+   GERMINA CODE · SISTEMA DE ANIMAÇÕES SUAVES DE ENTRADA (SCROLL REVEAL)
+   ========================================================================== */
+
+/* Estado Inicial dos Elementos Ocultos */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Estado Ativado (Quando o elemento entra na tela) */
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variação: Fade Simples (sem translação) */
+.revealFade {
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+.revealFade.revealed {
+  opacity: 1;
+}
+
+/* Variação: Entrada pela Esquerda */
+.revealLeft {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.revealLeft.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Variação: Entrada com Escala Suave */
+.revealScale {
+  opacity: 0;
+  transform: scale(0.96) translateY(20px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.revealScale.revealed {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ==========================================================================
+   TEXT SPLIT · REVELAÇÃO EDITORIAL LINHA POR LINHA COM MÁSCARA
+   ========================================================================== */
+.splitText {
+  display: block;
+}
+
+.splitLine {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em; /* Evita cortar letras descendentes como g, p, j, y */
+}
+
+.splitLineInner {
+  display: block;
+  transform: translateY(115%);
+  opacity: 0;
+  transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.75s ease;
+  will-change: transform, opacity;
+}
+
+/* Quando o container pai é revelado */
+.revealed .splitLineInner,
+.splitText.revealed .splitLineInner {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Delays escalonados entre linhas */
+.splitLine:nth-child(1) .splitLineInner {
+  transition-delay: 0.05s;
+}
+
+.splitLine:nth-child(2) .splitLineInner {
+  transition-delay: 0.18s;
+}
+
+.splitLine:nth-child(3) .splitLineInner {
+  transition-delay: 0.30s;
+}
+
+.splitLine:nth-child(4) .splitLineInner {
+  transition-delay: 0.42s;
+}
+
+/* Delays Escalonados (Stagger) para Cards e Listas */
+.delay1 {
+  transition-delay: 0.1s !important;
+}
+
+.delay2 {
+  transition-delay: 0.2s !important;
+}
+
+.delay3 {
+  transition-delay: 0.3s !important;
+}
+
+.delay4 {
+  transition-delay: 0.4s !important;
+}
+
+.delay5 {
+  transition-delay: 0.5s !important;
+}
+
+/* Acessibilidade: Desativa animações se o usuário preferir movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .revealFade,
+  .revealLeft,
+  .revealScale,
+  .splitLineInner {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

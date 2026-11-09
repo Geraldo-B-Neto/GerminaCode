@@ -1,0 +1,165 @@
+.headerWrapper {
+  width: 100%;
+  background-color: var(--color-papel);
+  position: relative;
+  z-index: 100;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.25rem 0 1.5rem 0;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-tinta);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.logoLink:hover {
+  opacity: 0.85;
+}
+
+.logoSvg {
+  height: 38px;
+  width: auto;
+}
+
+/* Botão Menu Hambúrguer Minimalista de 2 Linhas */
+.menuButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: var(--color-tinta);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  padding: 0;
+}
+
+.menuButton:hover {
+  background-color: var(--color-broto);
+  transform: translateY(-1px);
+}
+
+.bar {
+  width: 24px;
+  height: 2.5px;
+  background-color: var(--color-papel);
+  border-radius: 2px;
+  transition: all var(--transition-normal);
+}
+
+/* Drawer / Menu Overlay */
+.navOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(20, 32, 26, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 101;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.navOverlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navDrawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  background-color: var(--color-tinta);
+  color: var(--color-papel);
+  z-index: 102;
+  padding: var(--spacing-8) var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform var(--transition-smooth);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.navDrawer.open {
+  transform: translateX(0);
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-6);
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+.drawerClose {
+  background: transparent;
+  color: var(--color-papel);
+  font-size: 1.5rem;
+  padding: var(--spacing-2);
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.drawerClose:hover {
+  color: var(--color-semente);
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-8);
+  list-style: none;
+  padding: 0;
+}
+
+.navItem {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-papel);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-2) 0;
+  border-bottom: 1px solid rgba(246, 244, 238, 0.08);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.navItem:hover {
+  color: var(--color-semente);
+  padding-left: var(--spacing-2);
+}
+
+.drawerFooter {
+  border-top: 1px solid var(--color-border-dark);
+  padding-top: var(--spacing-6);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-papel-light);
+}
+
+@media (max-width: 768px) {
+  .topBar {
+    padding: 1.5rem 0 1rem 0;
+  }
+}

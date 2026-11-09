@@ -1,0 +1,139 @@
+.section {
+  padding: 5.5rem 0 6.5rem 0;
+  background-color: var(--color-papel);
+}
+
+/* Cabeçalho da Seção */
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1.5px solid rgba(20, 32, 26, 0.85);
+}
+
+.sectionTitle {
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1vw, 0.9rem);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-tinta);
+  font-weight: 500;
+}
+
+.viewAllLink {
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1vw, 0.9rem);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-tinta);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.viewAllLink:hover {
+  color: var(--color-broto);
+  transform: translateX(3px);
+}
+
+/* Lista Vertical de Artigos */
+.postsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.postItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2.25rem 0 2.25rem 0;
+  border-bottom: 1.5px solid rgba(20, 32, 26, 0.85);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+
+.postItem:hover {
+  transform: translateX(4px);
+}
+
+/* Badges / Pílulas das Categorias */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.95rem;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  user-select: none;
+}
+
+/* Verde-limão semente */
+.tagProcesso {
+  background-color: #C8E86B;
+  color: #14201A;
+}
+
+/* Verde sálvia claro */
+.tagCodigo {
+  background-color: #BCD3BC;
+  color: #14201A;
+}
+
+/* Salmão / pêssego suave */
+.tagDesign {
+  background-color: #F5CEBD;
+  color: #14201A;
+}
+
+/* Bege creme claro */
+.tagNovidades {
+  background-color: #E6DFCE;
+  color: #14201A;
+}
+
+/* Título do Artigo */
+.postTitle {
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 400; /* Regular / clean idêntico à imagem */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-tinta);
+  margin-bottom: 0.65rem;
+  transition: color var(--transition-fast);
+}
+
+.postItem:hover .postTitle {
+  color: var(--color-broto);
+}
+
+/* Data */
+.postDate {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--color-tinta);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 0 4.5rem 0;
+  }
+
+  .postItem {
+    padding: 1.85rem 0;
+  }
+
+  .tag {
+    margin-bottom: 1rem;
+  }
+}

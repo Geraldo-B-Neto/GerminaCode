@@ -1,0 +1,124 @@
+.footer {
+  background-color: var(--color-tinta);
+  color: var(--color-papel);
+  padding: var(--spacing-20) 0 var(--spacing-8) 0;
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: var(--spacing-12);
+  margin-bottom: var(--spacing-16);
+}
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.brandDesc {
+  color: var(--color-papel-muted);
+  font-size: var(--font-size-sm);
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+.terminalBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-semente);
+  background: rgba(200, 232, 107, 0.08);
+  border: 1px solid rgba(200, 232, 107, 0.2);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-sm);
+  width: fit-content;
+}
+
+.columnTitle {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  color: var(--color-papel-light);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--spacing-4);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.link {
+  color: var(--color-papel-muted);
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.link:hover {
+  color: var(--color-semente);
+  transform: translateX(3px);
+}
+
+.emailBox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.emailLink {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-semente);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity var(--transition-fast);
+}
+
+.emailLink:hover {
+  opacity: 0.8;
+}
+
+.bottomBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-8);
+  border-top: 1px solid rgba(246, 244, 238, 0.08);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-papel-light);
+}
+
+.bottomRight {
+  display: flex;
+  gap: var(--spacing-6);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-8);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+  .bottomBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+  }
+}
+

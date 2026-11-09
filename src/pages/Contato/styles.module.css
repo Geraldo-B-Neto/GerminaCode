@@ -1,0 +1,103 @@
+.section {
+  padding: var(--spacing-16) 0 var(--spacing-24) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-16);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-4);
+}
+
+.subtitle {
+  font-size: var(--font-size-md);
+  color: var(--color-tinta-muted);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-8);
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.infoLabel {
+  color: var(--color-tinta-light);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+}
+
+.infoValue {
+  color: var(--color-tinta);
+  font-weight: var(--font-weight-medium);
+}
+
+.form {
+  background-color: #fff;
+  padding: var(--spacing-8);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  box-shadow: var(--shadow-subtle);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  color: var(--color-tinta);
+  font-weight: var(--font-weight-medium);
+}
+
+.input, .textarea {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-papel);
+  color: var(--color-tinta);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.input:focus, .textarea:focus {
+  border-color: var(--color-broto);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-10);
+  }
+}
+

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <!-- Fundo escuro Tinta arredondado -->
+  <rect width="64" height="64" rx="16" fill="#14201A"/>
+  
+  <!-- Chave Esquerda { -->
+  <path d="M22 18 C17 18 16 21 16 27 C16 30 14 32 11 32 C14 32 16 34 16 37 C16 43 17 46 22 46" 
+        stroke="#F6F4EE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        
+  <!-- Broto Central 🌱 -->
+  <!-- Caule -->
+  <path d="M31 46 C31 38 31 31 31 26" stroke="#C8E86B" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Folha Direita -->
+  <path d="M31 32 C31 32 37 31 39 25 C39 20 34 23 31 27 Z" fill="#C8E86B"/>
+  <!-- Folha Esquerda -->
+  <path d="M31 36 C31 36 26 36 24 31 C24 27 28 29 31 32 Z" fill="#256B42"/>
+
+  <!-- Chave Direita } -->
+  <path d="M42 18 C47 18 48 21 48 27 C48 30 50 32 53 32 C50 32 48 34 48 37 C48 43 47 46 42 46" 
+        stroke="#F6F4EE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+

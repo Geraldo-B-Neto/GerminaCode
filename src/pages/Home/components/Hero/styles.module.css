@@ -1,0 +1,492 @@
+.heroSection {
+  background-color: var(--color-papel);
+  position: relative;
+  overflow: hidden;
+  padding-top: 1.5rem;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Controle de Visibilidade Responsiva */
+.desktopOnly {
+  display: block;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+/* ==========================================================================
+   ENTRADA SUAVE EM CASCATA DE CIMA PARA BAIXO (HERO STAGGER ENTRANCE)
+   ========================================================================== */
+
+/* 1. Área Superior: Entra primeiro suavemente */
+.heroTopArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3.5rem;
+  gap: 2rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+  will-change: opacity, transform;
+}
+
+.heroTopArea.entered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.manifestoBlock {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.7vw, 2.2rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-tinta);
+  text-transform: uppercase;
+  max-width: 620px;
+}
+
+.manifestoPara {
+  margin-bottom: 1.5rem;
+}
+
+.manifestoPara:last-child {
+  margin-bottom: 0;
+}
+
+.servicesBlock {
+  font-family: var(--font-mono);
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  color: var(--color-tinta);
+  text-transform: uppercase;
+  text-align: right;
+  white-space: pre-line;
+  padding-top: 0.35rem;
+}
+
+/* ==========================================================================
+   2. PALCO DO DOMO E ANIMAÇÕES DO BROTO (Entra em seguida)
+   ========================================================================== */
+.domeStage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s,
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
+  will-change: opacity, transform;
+}
+
+.domeStage.entered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* O Grande Semicírculo Verde Semente */
+.dome {
+  width: min(740px, 88vw);
+  height: calc(min(740px, 88vw) / 2);
+  background-color: var(--color-semente);
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  box-shadow: 0 16px 48px rgba(200, 232, 107, 0.28);
+  transition: background-color 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Efeito Glow no Domo ao Regar */
+.dome.domeGlow {
+  animation: domePulse 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes domePulse {
+  0% {
+    filter: brightness(1);
+    box-shadow: 0 16px 48px rgba(200, 232, 107, 0.28);
+  }
+
+  30% {
+    filter: brightness(1.08);
+    background-color: #d6f779;
+    box-shadow: 0 24px 64px rgba(200, 232, 107, 0.6);
+  }
+
+  100% {
+    filter: brightness(1);
+    background-color: var(--color-semente);
+    box-shadow: 0 16px 48px rgba(200, 232, 107, 0.28);
+  }
+}
+
+/* Botão Interativo: REGAR O BROTO */
+.waterBadge {
+  position: absolute;
+  top: 14%;
+  right: 11%;
+  background-color: var(--color-tinta);
+  color: var(--color-papel);
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.85vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(20, 32, 26, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-normal);
+  z-index: 15;
+  user-select: none;
+}
+
+.waterBadge:hover {
+  background-color: var(--color-broto);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.waterBadge:active {
+  transform: translateY(0) scale(0.96);
+}
+
+/* Animação da Gota d'Água SVG */
+.dropTrack {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+  pointer-events: none;
+  z-index: 12;
+  animation: dropTravel 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+}
+
+@keyframes dropTravel {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6) rotate(15deg);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translate(-30px, 20px) scale(1.1) rotate(10deg);
+  }
+
+  75% {
+    opacity: 1;
+    transform: translate(-130px, 80px) scale(1.25) rotate(5deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-170px, 105px) scale(0.4);
+  }
+}
+
+.splashRing {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 11;
+  animation: splashExpand 0.6s ease-out 0.42s forwards;
+  opacity: 0;
+}
+
+@keyframes splashExpand {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+
+  30% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+}
+
+/* ==========================================================================
+   SÍMBOLO CENTRAL: ENTRADA, IDLE E INTERAÇÃO
+   ========================================================================== */
+.symbolContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(6%);
+  position: relative;
+  z-index: 5;
+}
+
+.domeSvg {
+  width: min(290px, 38vw);
+  height: auto;
+  overflow: visible;
+}
+
+/* 1. Animação de Entrada: Chaves { } */
+.bracketLeft {
+  transform-origin: center;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.bracketRight {
+  transform-origin: center;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.initialLoad .bracketLeft {
+  transform: translateX(20px) scale(0.92);
+  opacity: 0;
+}
+
+.initialLoad .bracketRight {
+  transform: translateX(-20px) scale(0.92);
+  opacity: 0;
+}
+
+.entered .bracketLeft {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+.entered .bracketRight {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+/* 1. Animação de Entrada: Caule 🌱 */
+.sproutStem {
+  transform-origin: 79px 98px;
+  transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s, opacity 0.5s ease 0.2s;
+}
+
+.initialLoad .sproutStem {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.entered .sproutStem {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+/* Abertura das Folhinhas */
+.leafLeft {
+  transform-origin: 79px 66px;
+  transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s, opacity 0.4s ease 0.4s;
+}
+
+.initialLoad .leafLeft {
+  transform: scale(0) rotate(20deg);
+  opacity: 0;
+}
+
+.entered .leafLeft {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+.leafRight {
+  transform-origin: 79px 56px;
+  transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.48s, opacity 0.4s ease 0.48s;
+}
+
+.initialLoad .leafRight {
+  transform: scale(0) rotate(-20deg);
+  opacity: 0;
+}
+
+.entered .leafRight {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+/* 2. Estado de Repouso: Loop de Respiração Vital */
+.sproutGroup {
+  transform-origin: 79px 98px;
+}
+
+.sproutGroup.idleBreath {
+  animation: idleBreathing 4s ease-in-out infinite;
+}
+
+@keyframes idleBreathing {
+  0% {
+    transform: scale(1, 1) rotate(0deg);
+  }
+
+  25% {
+    transform: scale(0.99, 1.03) rotate(-1.5deg);
+  }
+
+  50% {
+    transform: scale(1, 1.01) rotate(0.4deg);
+  }
+
+  75% {
+    transform: scale(0.995, 1.035) rotate(1.5deg);
+  }
+
+  100% {
+    transform: scale(1, 1) rotate(0deg);
+  }
+}
+
+/* 3. Interação ao Clicar em "REGAR O BROTO" */
+.sproutGroup.wateringActive {
+  animation: sproutAbsorb 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+@keyframes sproutAbsorb {
+  0% {
+    transform: scale(1, 1);
+  }
+
+  20% {
+    transform: scale(1.08, 0.93);
+  }
+
+  45% {
+    transform: scale(0.94, 1.16);
+  }
+
+  70% {
+    transform: scale(1.03, 0.97);
+  }
+
+  85% {
+    transform: scale(0.99, 1.02);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* ==========================================================================
+   3. Informações dos Cantos Inferiores (Entra por último no fluxo vertical)
+   ========================================================================== */
+.bottomInfoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.48s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.48s;
+  will-change: opacity, transform;
+}
+
+.bottomInfoRow.entered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cornerLeft,
+.cornerRight {
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 0.95vw, 0.82rem);
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  color: var(--color-tinta);
+  text-transform: uppercase;
+  pointer-events: auto;
+}
+
+.cornerLeft {
+  text-align: left;
+}
+
+.cornerRight {
+  text-align: right;
+}
+
+.cornerLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.cornerLink:hover {
+  color: var(--color-broto);
+}
+
+/* Divisor de rodapé do Hero */
+.heroDivider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(20, 32, 26, 0.1);
+  margin-top: 0;
+}
+
+/* Regras Responsivas para Mobile */
+@media (max-width: 768px) {
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+
+  .heroSection {
+    padding-top: 1rem;
+  }
+
+  .heroTopArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .manifestoBlock {
+    font-size: clamp(1.15rem, 5vw, 1.6rem);
+    line-height: 1.25;
+    max-width: 65%;
+  }
+
+  .manifestoPara {
+    margin-bottom: 1.25rem;
+  }
+
+  .servicesBlock {
+    font-size: clamp(0.6rem, 2.3vw, 0.75rem);
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    text-align: right;
+    padding-top: 0.15rem;
+    max-width: 35%;
+  }
+
+  .bottomInfoRow {
+    display: none;
+  }
+}

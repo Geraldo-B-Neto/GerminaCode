@@ -1,0 +1,125 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Tamanhos */
+.sm {
+  padding: 0.45rem 1rem;
+  font-size: var(--font-size-xs);
+}
+
+.md {
+  padding: 0.75rem 1.75rem;
+  font-size: var(--font-size-sm);
+}
+
+.lg {
+  padding: 1rem 2.25rem;
+  font-size: var(--font-size-base);
+}
+
+/* Variantes */
+/* Semente vibrante (fundo verde-limão da identidade) */
+.primary {
+  background-color: var(--color-semente);
+  color: var(--color-tinta);
+  font-weight: var(--font-weight-bold);
+}
+
+.primary:hover {
+  background-color: #d6f27e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200, 232, 107, 0.4);
+}
+
+.primary:active {
+  transform: translateY(0);
+}
+
+/* Tinta Escuro */
+.dark {
+  background-color: var(--color-tinta);
+  color: var(--color-papel);
+}
+
+.dark:hover {
+  background-color: var(--color-broto);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(20, 32, 26, 0.25);
+}
+
+/* Broto verde institucional */
+.broto {
+  background-color: var(--color-broto);
+  color: var(--color-papel);
+}
+
+.broto:hover {
+  background-color: #1b5332;
+  transform: translateY(-2px);
+}
+
+/* Outline */
+.outline {
+  background-color: transparent;
+  color: var(--color-tinta);
+  border-color: var(--color-border);
+}
+
+.outline:hover {
+  border-color: var(--color-tinta);
+  background-color: rgba(20, 32, 26, 0.04);
+}
+
+/* Outline em fundo escuro */
+.outlineDark {
+  background-color: transparent;
+  color: var(--color-papel);
+  border-color: var(--color-border-dark);
+}
+
+.outlineDark:hover {
+  border-color: var(--color-semente);
+  color: var(--color-semente);
+}
+
+/* Ghost / Link editorial com seta */
+.ghost {
+  background: transparent;
+  color: var(--color-tinta);
+  padding: 0.5rem 0;
+  border-radius: 0;
+  border: none;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.02em;
+}
+
+.ghost:hover {
+  color: var(--color-broto);
+}
+
+.ghost:hover .icon {
+  transform: translateX(4px);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  transition: transform var(--transition-fast);
+}
+

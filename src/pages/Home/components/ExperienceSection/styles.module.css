@@ -1,0 +1,105 @@
+.section {
+  background-color: var(--color-papel);
+  padding: 6.5rem 0 8rem 0;
+  border-bottom: 1px solid rgba(20, 32, 26, 0.08);
+}
+
+.heading {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.8vw, 3.35rem);
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto 5.5rem auto;
+  color: var(--color-tinta);
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4.5rem;
+  align-items: flex-start;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-top: 1rem;
+}
+
+.description {
+  font-family: var(--font-primary);
+  font-size: clamp(1.15rem, 1.55vw, 1.35rem);
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--color-tinta);
+  letter-spacing: -0.01em;
+  max-width: 500px;
+}
+
+.aboutLink {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-tinta);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  width: fit-content;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.aboutLink:hover {
+  color: var(--color-broto);
+  transform: translateX(4px);
+}
+
+.mediaBox {
+  background-color: #B4CBB4; /* Verde sálvia suave idêntico à foto */
+  border-radius: 20px;
+  height: 380px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 2rem;
+  border: 1px solid rgba(20, 32, 26, 0.06);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(20, 32, 26, 0.04);
+  transition: transform var(--transition-normal);
+}
+
+.mediaBox:hover {
+  transform: translateY(-4px);
+}
+
+.mediaLabel {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-tinta);
+  opacity: 0.9;
+  user-select: none;
+}
+
+@media (max-width: 900px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .heading {
+    margin-bottom: 3.5rem;
+  }
+  .mediaBox {
+    height: 300px;
+  }
+}
+
