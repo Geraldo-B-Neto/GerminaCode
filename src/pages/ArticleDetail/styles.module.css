@@ -1,0 +1,746 @@
+.articlePage {
+  background-color: var(--color-papel);
+  color: var(--color-tinta);
+  min-height: 100vh;
+  padding: 2rem 0 6rem 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   MOTION LINE DE ENTRADA NO ARTIGO
+   ========================================================================== */
+.entranceMotionLineTrack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: rgba(20, 32, 26, 0.08);
+  z-index: 9999;
+}
+
+.entranceMotionLine {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--color-broto), var(--color-semente), #FFFFFF);
+  box-shadow: 0 0 14px var(--color-semente);
+  animation: entranceBeam 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: left;
+}
+
+@keyframes entranceBeam {
+  0% { transform: scaleX(0); }
+  50% { transform: scaleX(0.7); }
+  100% { transform: scaleX(1); opacity: 0.8; }
+}
+
+/* ==========================================================================
+   TOP NAV / BREADCRUMB
+   ========================================================================== */
+.topNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1.5px solid rgba(20, 32, 26, 0.12);
+}
+
+.backButton {
+  font-family: var(--font-mono);
+  font-size: clamp(0.75rem, 0.95vw, 0.88rem);
+  font-weight: 500;
+  color: var(--color-tinta);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+}
+
+.backButton:hover {
+  color: var(--color-broto);
+  transform: translateX(-4px);
+}
+
+.navMetaRight {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.95rem;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  user-select: none;
+}
+
+.tagProcesso { background-color: #C8E86B; color: #14201A; }
+.tagCodigo { background-color: #BCD3BC; color: #14201A; }
+.tagDesign { background-color: #F5CEBD; color: #14201A; }
+.tagNovidades { background-color: #E6DFCE; color: #14201A; }
+
+.readTimeText {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--color-tinta);
+  opacity: 0.65;
+}
+
+/* ==========================================================================
+   HEADER DO ARTIGO
+   ========================================================================== */
+.header {
+  max-width: 980px;
+  margin-bottom: 3.5rem;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--color-tinta);
+  opacity: 0.7;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.metaSeparator {
+  opacity: 0.4;
+}
+
+.articleTitle {
+  font-family: var(--font-primary);
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--color-tinta);
+  margin-bottom: 1.75rem;
+}
+
+.articleSubtitle {
+  font-family: var(--font-primary);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(20, 32, 26, 0.85);
+  max-width: 860px;
+}
+
+/* ==========================================================================
+   IMAGEM HERO PANORÂMICA (FIG 01)
+   ========================================================================== */
+.heroFigure {
+  margin: 0 0 5rem 0;
+  width: 100%;
+}
+
+.heroMediaBox {
+  width: 100%;
+  height: clamp(320px, 42vw, 480px);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  border: 1px solid rgba(20, 32, 26, 0.08);
+  box-shadow: 0 16px 36px rgba(20, 32, 26, 0.05);
+}
+
+.mediaOverlayBadge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  background-color: var(--color-tinta);
+  color: var(--color-papel);
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  align-self: flex-start;
+  text-transform: uppercase;
+}
+
+.generativeIllustration {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.blueprintSvg {
+  max-width: 580px;
+  width: 100%;
+  height: auto;
+}
+
+.mediaTitleLabel {
+  font-family: var(--font-mono);
+  font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+  color: var(--color-tinta);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.figureCaption {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-tinta);
+  opacity: 0.65;
+  margin-top: 1rem;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   CORPO EDITORIAL
+   ========================================================================== */
+.articleBody {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.contentSection {
+  margin-bottom: 4.5rem;
+}
+
+.sectionHeading {
+  font-family: var(--font-primary);
+  font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-tinta);
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(20, 32, 26, 0.1);
+}
+
+.paragraphsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.paragraph {
+  font-family: var(--font-primary);
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+  line-height: 1.72;
+  color: rgba(20, 32, 26, 0.9);
+  font-weight: 350;
+  letter-spacing: -0.01em;
+}
+
+.dropCapParagraph::first-letter {
+  font-family: var(--font-primary);
+  font-size: 4.4rem;
+  font-weight: 300;
+  line-height: 0.85;
+  float: left;
+  margin-right: 0.75rem;
+  margin-top: 0.2rem;
+  color: var(--color-broto);
+}
+
+/* Citação / Pull Quote */
+.pullQuote {
+  margin: 3rem 0;
+  padding: 1.75rem 2rem;
+  border-left: 3px solid var(--color-broto);
+  background-color: rgba(200, 232, 107, 0.12);
+  border-radius: 0 16px 16px 0;
+}
+
+.quoteText {
+  font-family: var(--font-primary);
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  line-height: 1.45;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-tinta);
+  margin-bottom: 0.75rem;
+}
+
+.quoteCite {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--color-broto);
+  display: block;
+  font-style: normal;
+}
+
+/* ==========================================================================
+   DISPOSIÇÃO 1: DIPTYCH (2 COLUNAS LADO A LADO)
+   ========================================================================== */
+.diptychGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.subFigure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.diptychMediaBox {
+  height: 260px;
+  border-radius: 18px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(20, 32, 26, 0.08);
+  transition: transform var(--transition-normal);
+}
+
+.diptychMediaBox:hover {
+  transform: translateY(-4px);
+}
+
+.subMediaBadge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--color-tinta);
+  opacity: 0.75;
+}
+
+.subItemTitle {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-tinta);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.subCaption {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-tinta);
+  opacity: 0.65;
+  margin-top: 0.75rem;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   DISPOSIÇÃO 2: OFFSET RIGHT (IMAGEM RETRATO LATERAL FLUTUANTE)
+   ========================================================================== */
+.offsetRightContainer {
+  margin: 3rem 0;
+  width: 100%;
+}
+
+.offsetFigure {
+  margin: 0;
+}
+
+.offsetMediaBox {
+  height: 320px;
+  border-radius: 20px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(20, 32, 26, 0.08);
+}
+
+.offsetBadge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--color-papel);
+  opacity: 0.85;
+}
+
+.offsetTitle {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--color-semente);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   DISPOSIÇÃO 3: TRIPTYCH (3 PASSOS SEQUENCIAIS EM COLUNA TRIPLA)
+   ========================================================================== */
+.triptychGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 3rem 0;
+}
+
+.triptychFigure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.triptychMediaBox {
+  height: 180px;
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(20, 32, 26, 0.08);
+}
+
+.triptychBadge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--color-tinta);
+  opacity: 0.8;
+}
+
+.triptychTitle {
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-tinta);
+}
+
+/* ==========================================================================
+   DISPOSIÇÃO 4: TECHNICAL BOX / TERMINAL DE INSPEÇÃO
+   ========================================================================== */
+.technicalBoxContainer {
+  margin: 3rem 0;
+}
+
+.terminalBox {
+  background-color: var(--color-tinta);
+  color: var(--color-papel);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(200, 232, 107, 0.2);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.25);
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background-color: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.terminalDots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.terminalTitle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-semente);
+  letter-spacing: 0.1em;
+}
+
+.terminalStatus {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-papel);
+  opacity: 0.5;
+}
+
+.terminalBody {
+  padding: 1.5rem 1.5rem 1.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.terminalCodeLine {
+  margin-bottom: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.prompt {
+  color: var(--color-semente);
+}
+
+.command {
+  color: var(--color-papel);
+}
+
+.terminalOutput {
+  color: rgba(246, 244, 238, 0.75);
+  font-size: 0.82rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-broto);
+}
+
+/* ==========================================================================
+   FOOTER DEDICADO DO ARTIGO COM LINK EXTERNO ASSOCIADO
+   ========================================================================== */
+.articleFooter {
+  max-width: 980px;
+  margin: 5rem auto 0 auto;
+}
+
+.footerDivider {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-tinta);
+  margin-bottom: 3.5rem;
+}
+
+/* Cartão com Link Oficial / Matéria Associada */
+.externalMediaCard {
+  background-color: var(--color-tinta);
+  color: var(--color-papel);
+  border-radius: 24px;
+  padding: 3rem;
+  margin-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(200, 232, 107, 0.25);
+  box-shadow: 0 20px 48px rgba(20, 32, 26, 0.25);
+}
+
+.externalMediaMeta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.externalMediaBadge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background-color: var(--color-semente);
+  color: var(--color-tinta);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.externalMediaSource {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-papel);
+  opacity: 0.6;
+  letter-spacing: 0.08em;
+}
+
+.externalMediaActionRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.externalMediaInfo {
+  max-width: 600px;
+}
+
+.externalMediaTitle {
+  font-family: var(--font-primary);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--color-papel);
+  margin-bottom: 0.75rem;
+}
+
+.externalMediaDesc {
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  color: rgba(246, 244, 238, 0.75);
+  line-height: 1.5;
+}
+
+.externalMediaButton {
+  background-color: var(--color-semente);
+  color: var(--color-tinta);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.15rem 1.75rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.externalMediaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(200, 232, 107, 0.35);
+  background-color: #D6F285;
+}
+
+.extIcon {
+  font-size: 1.15rem;
+  transition: transform var(--transition-fast);
+}
+
+.externalMediaButton:hover .extIcon {
+  transform: translate(3px, -3px);
+}
+
+/* Paginação Entre Artigos */
+.paginationRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.paginationButton {
+  background: none;
+  border: 1px solid rgba(20, 32, 26, 0.15);
+  border-radius: 16px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.paginationNext {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.paginationButton:hover {
+  border-color: var(--color-broto);
+  transform: translateY(-3px);
+  background-color: rgba(37, 107, 66, 0.03);
+}
+
+.paginationLabel {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--color-broto);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.paginationTitle {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--color-tinta);
+  line-height: 1.35;
+}
+
+.bottomActions {
+  display: flex;
+  justify-content: center;
+}
+
+.returnButton {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-tinta);
+  background: none;
+  border: 1px solid rgba(20, 32, 26, 0.3);
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.returnButton:hover {
+  background-color: var(--color-tinta);
+  color: var(--color-papel);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE MOBILE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .topNav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .navMetaRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .articleTitle {
+    font-size: clamp(2rem, 7vw, 2.8rem);
+  }
+
+  .heroMediaBox {
+    height: 280px;
+    padding: 1.25rem;
+  }
+
+  .diptychGrid,
+  .triptychGrid,
+  .paginationRow {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .paginationNext {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .externalMediaCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .externalMediaActionRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .externalMediaButton {
+    width: 100%;
+    justify-content: center;
+  }
+}

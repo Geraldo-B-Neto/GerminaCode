@@ -8,14 +8,12 @@ export default function ExperienceSection() {
         {/* Título Principal com Efeito Text Split (Desliza suavemente de dentro da máscara) */}
         <h2 className={`${styles.heading} splitText reveal`}>
           <span className="splitLine">
-            <span className="splitLineInner">Criamos experiências digitais que</span>
+            <span className="splitLineInner">Criamos experiências digitais</span>
           </span>
           <span className="splitLine">
-            <span className="splitLineInner">crescem com o seu negócio e funcionam</span>
+            <span className="splitLineInner">crescem com o seu negócio e funcionam de verdade</span>
           </span>
-          <span className="splitLine">
-            <span className="splitLineInner">de verdade.</span>
-          </span>
+
         </h2>
 
         {/* Grid de Conteúdo */}

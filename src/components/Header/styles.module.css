@@ -30,6 +30,89 @@
   width: auto;
 }
 
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Botão de Controle de Áudio Minimalista com Equalizador */
+.soundButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: transparent;
+  border: 1px solid rgba(20, 32, 26, 0.2);
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-tinta);
+  transition: all var(--transition-fast);
+}
+
+.soundButton:hover {
+  border-color: var(--color-broto);
+  background-color: rgba(37, 107, 66, 0.04);
+  color: var(--color-broto);
+}
+
+.soundBars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 12px;
+}
+
+.eqBar {
+  width: 2.5px;
+  background-color: var(--color-broto);
+  border-radius: 1px;
+}
+
+.eqBar1 {
+  height: 8px;
+  animation: eqBounce1 0.8s ease-in-out infinite alternate;
+}
+
+.eqBar2 {
+  height: 12px;
+  animation: eqBounce2 0.65s ease-in-out infinite alternate 0.15s;
+}
+
+.eqBar3 {
+  height: 6px;
+  animation: eqBounce3 0.9s ease-in-out infinite alternate 0.3s;
+}
+
+@keyframes eqBounce1 {
+  0% { height: 4px; }
+  100% { height: 11px; }
+}
+
+@keyframes eqBounce2 {
+  0% { height: 12px; }
+  100% { height: 5px; }
+}
+
+@keyframes eqBounce3 {
+  0% { height: 3px; }
+  100% { height: 9px; }
+}
+
+.eqBarMuted {
+  animation: none !important;
+  height: 3px !important;
+  background-color: rgba(20, 32, 26, 0.35) !important;
+}
+
+.soundText {
+  user-select: none;
+}
+
 /* Botão Menu Hambúrguer Minimalista de 2 Linhas */
 .menuButton {
   width: 48px;

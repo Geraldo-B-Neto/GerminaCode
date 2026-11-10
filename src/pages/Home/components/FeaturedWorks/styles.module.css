@@ -112,69 +112,309 @@
   color: var(--color-broto);
 }
 
-/* Bloco Lateral Interativo de Etapas */
+/* Bloco Lateral Interativo (3 Blocos Centralizados e Interativos) */
 .stageControlCol {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: 380px;
+  width: 100%;
 }
 
 .interactiveBox {
   display: flex;
-  align-items: flex-end;
-  flex-direction: row-reverse;
-  gap: 1rem;
-  padding: 1.75rem;
-}
-
-.badgeGroup {
-  display: flex;
-  gap: 0.75rem;
   align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  height: 100%;
 }
 
-.stageButton {
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
+.tileWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interactiveTile {
+  width: clamp(62px, 6.5vw, 80px);
+  height: clamp(62px, 6.5vw, 80px);
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
   font-weight: 700;
-  font-size: 1rem;
-  transition: all var(--transition-fast);
   cursor: pointer;
-  border: 1px solid rgba(20, 32, 26, 0.1);
+  user-select: none;
+  border: 1px solid rgba(20, 32, 26, 0.08);
+  box-shadow: 0 6px 16px rgba(20, 32, 26, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease,
+              border-color 0.25s ease;
 }
 
-.stageBtn1 {
+.interactiveTile:hover {
+  transform: translateY(-8px) scale(1.08);
+  box-shadow: 0 16px 28px rgba(20, 32, 26, 0.12);
+}
+
+.interactiveTile:active {
+  transform: translateY(-2px) scale(0.97);
+}
+
+.tile01 {
   background-color: var(--color-semente);
   color: var(--color-tinta);
 }
 
-.stageBtn2 {
-  background-color: var(--color-etapa-broto);
+.tile02 {
+  background-color: #E4DDCB;
   color: var(--color-tinta);
 }
 
-.stageBtn3 {
-  background-color: var(--color-etapa-crescimento);
+.tile03 {
+  background-color: #B8CEB7;
   color: var(--color-tinta);
 }
 
-.stageButton:hover {
-  transform: translateY(-3px) scale(1.05);
+.tileActive {
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 18px 32px rgba(20, 32, 26, 0.16);
+  border-color: var(--color-tinta);
 }
 
-.stageLabel {
+.tileIcon {
+  line-height: 1;
+  display: inline-block;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   ANIMAÇÃO 1: {🌱} - EXPANSÃO BOTÂNICA E BURST DE FOLHAS
+   ========================================================================== */
+.tileBounce1 {
+  animation: organicSquash 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes organicSquash {
+  0% { transform: scale(1, 1); }
+  25% { transform: scale(1.22, 0.82); }
+  50% { transform: scale(0.88, 1.18); }
+  75% { transform: scale(1.06, 0.96); }
+  100% { transform: scale(1.06, 1.06); }
+}
+
+.sproutBurstContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sproutWave {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  border: 2px solid var(--color-broto);
+  animation: sproutWaveExpand 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes sproutWaveExpand {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.sproutLeaf {
+  position: absolute;
+  font-size: 0.95rem;
+  animation: sproutFlyOut 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.leafNW { animation-name: flyNW; }
+.leafNE { animation-name: flyNE; }
+.leafSW { animation-name: flySW; }
+.leafSE { animation-name: flySE; }
+
+@keyframes flyNW {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  100% { transform: translate(-38px, -38px) scale(1.2) rotate(-25deg); opacity: 0; }
+}
+
+@keyframes flyNE {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  100% { transform: translate(38px, -38px) scale(1.2) rotate(25deg); opacity: 0; }
+}
+
+@keyframes flySW {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  100% { transform: translate(-36px, 36px) scale(1.1) rotate(-40deg); opacity: 0; }
+}
+
+@keyframes flySE {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  100% { transform: translate(36px, 36px) scale(1.1) rotate(40deg); opacity: 0; }
+}
+
+/* ==========================================================================
+   ANIMAÇÃO 2: >_ - SCANLINE CRT & GLITCH CIBERNÉTICO
+   ========================================================================== */
+.tileGlitch2 {
+  animation: terminalGlitchShake 0.45s ease forwards;
+}
+
+@keyframes terminalGlitchShake {
+  0% { transform: translate(0, 0) scale(1); text-shadow: none; }
+  20% { transform: translate(-4px, 2px) scale(1.04); text-shadow: -2px 0 #256B42, 2px 0 #F3C7B5; }
+  40% { transform: translate(4px, -2px) scale(1.06); text-shadow: 2px 0 #256B42, -2px 0 #C8E86B; }
+  60% { transform: translate(-2px, 1px) scale(1.04); text-shadow: -1px 0 #256B42; }
+  80% { transform: translate(2px, -1px) scale(1.06); text-shadow: none; }
+  100% { transform: translate(0, 0) scale(1.06); }
+}
+
+.terminalScanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #256B42, #C8E86B, transparent);
+  box-shadow: 0 0 10px #256B42;
+  animation: scanlineSweep 0.55s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes scanlineSweep {
+  0% { top: -10%; opacity: 0.9; }
+  100% { top: 110%; opacity: 0; }
+}
+
+.glitchBurstContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.codeBit {
+  position: absolute;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
+  font-weight: 700;
   color: var(--color-tinta);
-  opacity: 0.8;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  background-color: var(--color-semente);
+  padding: 1px 4px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(20, 32, 26, 0.2);
+  animation: codeFlyOut 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.bit1 { animation-name: bitFly1; }
+.bit2 { animation-name: bitFly2; }
+.bit3 { animation-name: bitFly3; }
+.bit4 { animation-name: bitFly4; }
+
+@keyframes bitFly1 {
+  0% { transform: translate(0, 0) scale(0.4); opacity: 1; }
+  100% { transform: translate(-42px, -24px) scale(1); opacity: 0; }
+}
+
+@keyframes bitFly2 {
+  0% { transform: translate(0, 0) scale(0.4); opacity: 1; }
+  100% { transform: translate(44px, -26px) scale(1); opacity: 0; }
+}
+
+@keyframes bitFly3 {
+  0% { transform: translate(0, 0) scale(0.4); opacity: 1; }
+  100% { transform: translate(-34px, 38px) scale(1); opacity: 0; }
+}
+
+@keyframes bitFly4 {
+  0% { transform: translate(0, 0) scale(0.4); opacity: 1; }
+  100% { transform: translate(38px, 34px) scale(1); opacity: 0; }
+}
+
+/* ==========================================================================
+   ANIMAÇÃO 3: 🌿 - GIRO 360° E ONDAS DE CHOQUE DE COLHEITA
+   ========================================================================== */
+.leafSpin360 {
+  animation: spinLeafSpring 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes spinLeafSpring {
+  0% { transform: rotate(0deg) scale(1); }
+  40% { transform: rotate(200deg) scale(1.35); }
+  75% { transform: rotate(375deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.harvestWaveContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.harvestRing1,
+.harvestRing2 {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-tinta);
+  opacity: 0;
+}
+
+.harvestRing1 {
+  animation: ringExpand 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.harvestRing2 {
+  animation: ringExpand 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards;
+  border-color: var(--color-broto);
+}
+
+@keyframes ringExpand {
+  0% { width: 40px; height: 40px; opacity: 0.8; transform: scale(0.8); }
+  100% { width: 140px; height: 140px; opacity: 0; transform: scale(1.4); }
+}
+
+.pollenSpark {
+  position: absolute;
+  font-size: 0.85rem;
+  color: var(--color-broto);
+  animation: sparkDrift 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.spark1 { animation-name: sparkFly1; }
+.spark2 { animation-name: sparkFly2; }
+.spark3 { animation-name: sparkFly3; }
+
+@keyframes sparkFly1 {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  100% { transform: translate(0, -45px) scale(1.2); opacity: 0; }
+}
+
+@keyframes sparkFly2 {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  100% { transform: translate(-42px, 15px) scale(1.1); opacity: 0; }
+}
+
+@keyframes sparkFly3 {
+  0% { transform: translate(0, 0) scale(0); opacity: 1; }
+  100% { transform: translate(42px, 15px) scale(1.1); opacity: 0; }
 }
 
 /* Responsividade Mobile */
@@ -199,5 +439,15 @@
 
   .mediaBox {
     height: 280px;
+  }
+
+  .stageControlCol {
+    height: auto;
+    padding: 1rem 0;
+  }
+
+  .interactiveBox {
+    justify-content: center;
+    gap: 1rem;
   }
 }

@@ -20,8 +20,6 @@
 /* ==========================================================================
    ENTRADA SUAVE EM CASCATA DE CIMA PARA BAIXO (HERO STAGGER ENTRANCE)
    ========================================================================== */
-
-/* 1. Área Superior: Entra primeiro suavemente */
 .heroTopArea {
   display: flex;
   justify-content: space-between;
@@ -72,7 +70,7 @@
 }
 
 /* ==========================================================================
-   2. PALCO DO DOMO E ANIMAÇÕES DO BROTO (Entra em seguida)
+   PALCO DO DOMO E ANIMAÇÕES DO BROTO
    ========================================================================== */
 .domeStage {
   position: relative;
@@ -136,7 +134,7 @@
 /* Botão Interativo: REGAR O BROTO */
 .waterBadge {
   position: absolute;
-  top: 14%;
+  top: 1%;
   right: 11%;
   background-color: var(--color-tinta);
   color: var(--color-papel);
@@ -167,35 +165,94 @@
   transform: translateY(0) scale(0.96);
 }
 
-/* Animação da Gota d'Água SVG */
-.dropTrack {
+/* ==========================================================================
+   CHUVA DE GOTAS EM SVG AO REGAR
+   ========================================================================== */
+.dropStream {
   position: absolute;
-  top: 20%;
-  right: 20%;
+  top: 18%;
+  right: 16%;
   pointer-events: none;
   z-index: 12;
-  animation: dropTravel 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
 }
 
-@keyframes dropTravel {
+.dropTrack1 {
+  animation: dropTravel1 0.52s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+}
+
+.dropTrack2 {
+  animation: dropTravel2 0.58s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.08s forwards;
+  opacity: 0;
+}
+
+.dropTrack3 {
+  animation: dropTravel3 0.64s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.16s forwards;
+  opacity: 0;
+}
+
+@keyframes dropTravel1 {
   0% {
     opacity: 0;
-    transform: translate(0, 0) scale(0.6) rotate(15deg);
+    transform: translate(0, 0) scale(0.6);
   }
 
-  20% {
+  25% {
     opacity: 1;
-    transform: translate(-30px, 20px) scale(1.1) rotate(10deg);
+    transform: translate(-35px, 25px) scale(1.1);
   }
 
   75% {
     opacity: 1;
-    transform: translate(-130px, 80px) scale(1.25) rotate(5deg);
+    transform: translate(-120px, 80px) scale(1.2);
   }
 
   100% {
     opacity: 0;
-    transform: translate(-170px, 105px) scale(0.4);
+    transform: translate(-155px, 102px) scale(0.3);
+  }
+}
+
+@keyframes dropTravel2 {
+  0% {
+    opacity: 0;
+    transform: translate(10px, -5px) scale(0.5);
+  }
+
+  25% {
+    opacity: 0.9;
+    transform: translate(-25px, 20px) scale(0.9);
+  }
+
+  75% {
+    opacity: 0.9;
+    transform: translate(-110px, 75px) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-145px, 98px) scale(0.3);
+  }
+}
+
+@keyframes dropTravel3 {
+  0% {
+    opacity: 0;
+    transform: translate(20px, -10px) scale(0.4);
+  }
+
+  25% {
+    opacity: 0.85;
+    transform: translate(-15px, 18px) scale(0.8);
+  }
+
+  75% {
+    opacity: 0.85;
+    transform: translate(-100px, 70px) scale(0.9);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-135px, 92px) scale(0.2);
   }
 }
 
@@ -206,7 +263,7 @@
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 11;
-  animation: splashExpand 0.6s ease-out 0.42s forwards;
+  animation: splashExpand 0.65s ease-out 0.44s forwards;
   opacity: 0;
 }
 
@@ -216,18 +273,18 @@
     transform: translate(-50%, -50%) scale(0.2);
   }
 
-  30% {
-    opacity: 0.8;
+  35% {
+    opacity: 0.85;
   }
 
   100% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(2.2);
+    transform: translate(-50%, -50%) scale(2.4);
   }
 }
 
 /* ==========================================================================
-   SÍMBOLO CENTRAL: ENTRADA, IDLE E INTERAÇÃO
+   SÍMBOLO CENTRAL: BROTO, FOLHAS EXTRAS E FLORES QUE DESABROCHAM
    ========================================================================== */
 .symbolContainer {
   display: flex;
@@ -244,12 +301,8 @@
   overflow: visible;
 }
 
-/* 1. Animação de Entrada: Chaves { } */
-.bracketLeft {
-  transform-origin: center;
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-}
-
+/* Chaves { } */
+.bracketLeft,
 .bracketRight {
   transform-origin: center;
   transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
@@ -275,7 +328,7 @@
   opacity: 1;
 }
 
-/* 1. Animação de Entrada: Caule 🌱 */
+/* Caule Inicial 🌱 */
 .sproutStem {
   transform-origin: 79px 98px;
   transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s, opacity 0.5s ease 0.2s;
@@ -291,20 +344,10 @@
   opacity: 1;
 }
 
-/* Abertura das Folhinhas */
+/* Folhas Iniciais */
 .leafLeft {
   transform-origin: 79px 66px;
   transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s, opacity 0.4s ease 0.4s;
-}
-
-.initialLoad .leafLeft {
-  transform: scale(0) rotate(20deg);
-  opacity: 0;
-}
-
-.entered .leafLeft {
-  transform: scale(1) rotate(0deg);
-  opacity: 1;
 }
 
 .leafRight {
@@ -312,17 +355,130 @@
   transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.48s, opacity 0.4s ease 0.48s;
 }
 
+.initialLoad .leafLeft {
+  transform: scale(0) rotate(20deg);
+  opacity: 0;
+}
+
 .initialLoad .leafRight {
   transform: scale(0) rotate(-20deg);
   opacity: 0;
 }
 
+.entered .leafLeft,
 .entered .leafRight {
   transform: scale(1) rotate(0deg);
   opacity: 1;
 }
 
-/* 2. Estado de Repouso: Loop de Respiração Vital */
+/* ==========================================================================
+   FLORESCIMENTO: NOVAS FOLHAS E FLORES
+   ========================================================================== */
+
+/* Extensão do Caule para Cima ao Florescer */
+.stemExtension {
+  transform-origin: 79px 40px;
+  transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.bloomed .stemExtension {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+/* Novas Folhas que Brotam mais acima */
+.extraLeafLeft {
+  transform-origin: 79px 38px;
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s, opacity 0.5s ease 0.15s;
+  transform: scale(0) rotate(25deg);
+  opacity: 0;
+}
+
+.extraLeafRight {
+  transform-origin: 79px 30px;
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.22s, opacity 0.5s ease 0.22s;
+  transform: scale(0) rotate(-25deg);
+  opacity: 0;
+}
+
+.bloomed .extraLeafLeft,
+.bloomed .extraLeafRight {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+/* Hastes Florais Laterais */
+.sideBranch {
+  transform-origin: 79px 36px;
+  transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.18s, opacity 0.4s ease 0.18s;
+  transform: scale(0);
+  opacity: 0;
+}
+
+.bloomed .sideBranch {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Flores que Desabrocham no Topo e nas Hastes */
+.flowerTop {
+  transform-origin: 0 0;
+  transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) 0.28s, opacity 0.5s ease 0.28s;
+  transform: scale(0) rotate(-35deg);
+  opacity: 0;
+}
+
+.flowerSideLeft {
+  transform-origin: 0 0;
+  transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s, opacity 0.4s ease 0.35s;
+  transform: scale(0) rotate(40deg);
+  opacity: 0;
+}
+
+.flowerSideRight {
+  transform-origin: 0 0;
+  transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.42s, opacity 0.4s ease 0.42s;
+  transform: scale(0) rotate(-40deg);
+  opacity: 0;
+}
+
+.bloomed .flowerTop,
+.bloomed .flowerSideLeft,
+.bloomed .flowerSideRight {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+/* Partículas de Pólen e Brilhos Cintilantes */
+.pollenSparkles {
+  opacity: 0;
+  transition: opacity 0.6s ease 0.45s;
+}
+
+.bloomed .pollenSparkles {
+  opacity: 1;
+  animation: sparkleTwinkle 2.5s ease-in-out infinite;
+}
+
+@keyframes sparkleTwinkle {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+/* ==========================================================================
+   LOOP DE RESPIRAÇÃO VITAL (IDLE) & IMPACTO DA REGA
+   ========================================================================== */
 .sproutGroup {
   transform-origin: 79px 98px;
 }
@@ -353,9 +509,8 @@
   }
 }
 
-/* 3. Interação ao Clicar em "REGAR O BROTO" */
 .sproutGroup.wateringActive {
-  animation: sproutAbsorb 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+  animation: sproutAbsorb 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
 }
 
 @keyframes sproutAbsorb {
@@ -363,16 +518,16 @@
     transform: scale(1, 1);
   }
 
-  20% {
-    transform: scale(1.08, 0.93);
+  18% {
+    transform: scale(1.1, 0.92);
   }
 
-  45% {
-    transform: scale(0.94, 1.16);
+  42% {
+    transform: scale(0.93, 1.2);
   }
 
-  70% {
-    transform: scale(1.03, 0.97);
+  68% {
+    transform: scale(1.04, 0.97);
   }
 
   85% {
@@ -384,9 +539,7 @@
   }
 }
 
-/* ==========================================================================
-   3. Informações dos Cantos Inferiores (Entra por último no fluxo vertical)
-   ========================================================================== */
+/* Rodapé do Hero (Alinhado com a base do domo) */
 .bottomInfoRow {
   display: flex;
   justify-content: space-between;

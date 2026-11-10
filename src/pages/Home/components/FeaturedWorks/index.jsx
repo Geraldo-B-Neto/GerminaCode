@@ -2,17 +2,31 @@ import { useState } from 'react';
 import SectionContainer from '../../../../components/SectionContainer';
 import ProjectModal from '../../../../components/ProjectModal';
 import { projectsData } from '../../../../data/projectsData';
+import { playSproutPopSound, playTerminalGlitchSound, playHarvestSound } from '../../../../utils/soundEffects';
 import styles from './styles.module.css';
 
 export default function FeaturedWorks() {
-  const [activeStage, setActiveStage] = useState(1);
+  const [activeTile, setActiveTile] = useState(null);
+  const [anim1Key, setAnim1Key] = useState(0);
+  const [anim2Key, setAnim2Key] = useState(0);
+  const [anim3Key, setAnim3Key] = useState(0);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const stagesInfo = {
-    1: 'ETAPA 01 · SEMENTE / DISCOVERY & WIREFRAMES',
-    2: 'ETAPA 02 · BROTO / DESIGN SYSTEM & PROTÓTIPO',
-    3: 'ETAPA 03 · CRESCIMENTO / CÓDIGO FULL STACK',
+  const handleTileClick = (index) => {
+    setActiveTile(index);
+    if (index === 1) {
+      setAnim1Key(k => k + 1);
+      playSproutPopSound();
+    }
+    if (index === 2) {
+      setAnim2Key(k => k + 1);
+      playTerminalGlitchSound();
+    }
+    if (index === 3) {
+      setAnim3Key(k => k + 1);
+      playHarvestSound();
+    }
   };
 
   const project1 = projectsData[0];
@@ -90,37 +104,87 @@ export default function FeaturedWorks() {
 
                   <div className={styles.stageControlCol}>
                     <div className={`${styles.interactiveBox} reveal delay2`}>
-                      <div className={styles.badgeGroup}>
-                        <button
-                          type="button"
-                          className={`${styles.stageButton} ${styles.stageBtn1}`}
-                          onClick={() => setActiveStage(1)}
-                          title="Etapa 1: Semente"
-                          aria-label="Etapa 1: Semente"
+                      {/* Bloco 1: {🌱} - Animação Botânica de Broto e Expansão Orgânica */}
+                      <div className={styles.tileWrapper}>
+                        <div
+                          className={`${styles.interactiveTile} ${styles.tile01} ${activeTile === 1 ? styles.tileActive : ''} ${anim1Key > 0 ? styles.tileBounce1 : ''}`}
+                          key={`tile1-${anim1Key}`}
+                          onClick={() => handleTileClick(1)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => e.key === 'Enter' && handleTileClick(1)}
+                          aria-label="Bloco interativo 1: Broto Orgânico"
+                          title="Clique para florescer {🌱}"
                         >
-                          {'{🌱}'}
-                        </button>
-                        <button
-                          type="button"
-                          className={`${styles.stageButton} ${styles.stageBtn2}`}
-                          onClick={() => setActiveStage(2)}
-                          title="Etapa 2: Broto"
-                          aria-label="Etapa 2: Broto"
-                        >
-                          &gt;_
-                        </button>
-                        <button
-                          type="button"
-                          className={`${styles.stageButton} ${styles.stageBtn3}`}
-                          onClick={() => setActiveStage(3)}
-                          title="Etapa 3: Crescimento"
-                          aria-label="Etapa 3: Crescimento"
-                        >
-                          🌿
-                        </button>
+                          <span className={styles.tileIcon}>{'{🌱}'}</span>
+                        </div>
+
+                        {/* Efeitos e Partículas Botânicas ao Clicar */}
+                        {anim1Key > 0 && (
+                          <div className={styles.sproutBurstContainer} key={`burst1-${anim1Key}`}>
+                            <span className={`${styles.sproutLeaf} ${styles.leafNW}`}>🌱</span>
+                            <span className={`${styles.sproutLeaf} ${styles.leafNE}`}>🌱</span>
+                            <span className={`${styles.sproutLeaf} ${styles.leafSW}`}>🍃</span>
+                            <span className={`${styles.sproutLeaf} ${styles.leafSE}`}>🍃</span>
+                            <span className={styles.sproutWave} />
+                          </div>
+                        )}
                       </div>
-                      <div className={styles.stageLabel}>
-                        {stagesInfo[activeStage]}
+
+                      {/* Bloco 2: >_ - Animação Cyber-Terminal Scanline & Matrix Glitch */}
+                      <div className={styles.tileWrapper}>
+                        <div
+                          className={`${styles.interactiveTile} ${styles.tile02} ${activeTile === 2 ? styles.tileActive : ''} ${anim2Key > 0 ? styles.tileGlitch2 : ''}`}
+                          key={`tile2-${anim2Key}`}
+                          onClick={() => handleTileClick(2)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => e.key === 'Enter' && handleTileClick(2)}
+                          aria-label="Bloco interativo 2: Terminal Glitch"
+                          title="Clique para executar o terminal >_"
+                        >
+                          <span className={styles.tileIcon}>&gt;_</span>
+                          {anim2Key > 0 && <span className={styles.terminalScanline} />}
+                        </div>
+
+                        {/* Partículas de Código Terminal ao Clicar */}
+                        {anim2Key > 0 && (
+                          <div className={styles.glitchBurstContainer} key={`burst2-${anim2Key}`}>
+                            <span className={`${styles.codeBit} ${styles.bit1}`}>01</span>
+                            <span className={`${styles.codeBit} ${styles.bit2}`}>&lt;/&gt;</span>
+                            <span className={`${styles.codeBit} ${styles.bit3}`}>EXEC</span>
+                            <span className={`${styles.codeBit} ${styles.bit4}`}>_</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Bloco 3: 🌿 - Animação de Colheita / Giro 360° e Onda de Choque */}
+                      <div className={styles.tileWrapper}>
+                        <div
+                          className={`${styles.interactiveTile} ${styles.tile03} ${activeTile === 3 ? styles.tileActive : ''}`}
+                          key={`tile3-${anim3Key}`}
+                          onClick={() => handleTileClick(3)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => e.key === 'Enter' && handleTileClick(3)}
+                          aria-label="Bloco interativo 3: Giro de Colheita"
+                          title="Clique para girar a colheita 🌿"
+                        >
+                          <span className={`${styles.tileIcon} ${anim3Key > 0 ? styles.leafSpin360 : ''}`}>
+                            🌿
+                          </span>
+                        </div>
+
+                        {/* Ondas e Brilhos de Colheita ao Clicar */}
+                        {anim3Key > 0 && (
+                          <div className={styles.harvestWaveContainer} key={`burst3-${anim3Key}`}>
+                            <span className={styles.harvestRing1} />
+                            <span className={styles.harvestRing2} />
+                            <span className={`${styles.pollenSpark} ${styles.spark1}`}>✨</span>
+                            <span className={`${styles.pollenSpark} ${styles.spark2}`}>✦</span>
+                            <span className={`${styles.pollenSpark} ${styles.spark3}`}>✨</span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

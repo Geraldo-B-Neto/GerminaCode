@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
+import { playLeafRustleSound } from './soundEffects';
 
 /**
  * Hook utilitário para ativar animações suaves de entrada conforme os elementos entram na tela.
  * Observa qualquer elemento com as classes: .reveal, .revealFade, .revealLeft, .revealScale
+ * e aciona um som sutil de folhas farfalhando (com cooldown anti-poluição).
  */
 export function useScrollReveal(threshold = 0.12) {
   useEffect(() => {
@@ -19,6 +21,8 @@ export function useScrollReveal(threshold = 0.12) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('revealed');
+            // Toca suavemente o farfalhar de folhas ao revelar nova seção/bloco importante
+            playLeafRustleSound();
             observer.unobserve(entry.target); // Revela uma vez e desconecta o elemento
           }
         });

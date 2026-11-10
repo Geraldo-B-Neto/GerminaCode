@@ -41,7 +41,7 @@
 }
 
 /* ==========================================================================
-   ELEMENTOS DE FUNDO PARALLAX
+   ELEMENTOS DE FUNDO PARALLAX (VISÍVEIS EM DESKTOP E MOBILE)
    ========================================================================== */
 
 /* 1. Ramo Principal Verde #C8E86B Sobreposto ao Título */
@@ -217,6 +217,7 @@
   }
 }
 
+/* Regras Responsivas Mobile com Elementos Parallax Alinhados Verticalmente */
 @media (max-width: 768px) {
   .section {
     padding: 4.5rem 0 5.5rem 0;
@@ -226,19 +227,52 @@
     margin-bottom: 3rem;
   }
 
+  /* Ilustração do Ramo no Topo alinhada verticalmente */
   .leafIllustration {
     left: auto;
-    right: -20px;
-    top: 20px;
-    width: 200px;
-    height: 280px;
-    opacity: 0.8;
+    right: 0.5rem;
+    top: 15px;
+    width: 180px;
+    height: 260px;
+    opacity: 0.75;
   }
 
-  .leafSecondary,
-  .growthRings,
+  /* Ramo Secundário alinhado no fluxo vertical da coluna */
+  .leafSecondary {
+    display: block;
+    width: 130px;
+    height: 230px;
+    left: 0.5rem;
+    top: 28%;
+    opacity: 0.25;
+  }
+
+  /* Anéis Concêntricos centralizados no eixo vertical do mobile */
+  .growthRings {
+    display: block;
+    width: 300px;
+    height: 300px;
+    left: calc(50% - 150px);
+    right: auto;
+    top: 45%;
+    opacity: 0.16;
+  }
+
+  /* Coordenadas e Linhas Técnicas Verticais no Mobile (writing-mode vertical) */
   .techCoords {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    gap: 1.75rem;
+    left: 0.65rem;
+    top: 20%;
+    bottom: auto;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    opacity: 0.45;
+    white-space: nowrap;
+    z-index: 1;
   }
 
   .stagesGrid {
